@@ -42,6 +42,7 @@ sys.path_hooks.append(url_hook)
 Запускаем модуль на сервере (`python -m http.server` из каталога `rootserver`), в другом терминале запускаем активирующий скрипт локально в интерактивном режиме (`python -i activation_script.py`), пробуем сделать импорт:
 
 ![Error](screenshots/firstimport_error.png)
+
 Получаем ошибку `ModuleNotFoundError`: хук уже зарегистрирован, но адреса сервера нет в `sys.path`, поэтому искать модуль по HTTP интерпретатору негде.
 
 Затем выполняем команду
@@ -50,5 +51,6 @@ sys.path.append("http://localhost:8000")
 ```
 и пробуем сделать импорт снова.
 
-![alt text](screenshots/secondimport_success.png)
+![Success](screenshots/secondimport_success.png)
+
 Все успешно. Теперь для нового элемента `sys.path` срабатывает `url_hook`, он забирает у сервера список файлов и возвращает `URLFinder`; тот отдаёт спецификацию с `URLLoader`, который скачивает и выполняет исходник. Вызов `myremotemodule.myfoo()` печатает `Andrew's module is imported` — код действительно приехал с сервера.
