@@ -1,0 +1,14 @@
+EUR:
+  CharCode: EUR
+  Name: Евро
+  Nominal: 1
+  NumCode: '978'
+  Previous: 97.1
+  Value: 97.45
+USD:
+  CharCode: USD
+  Name: Доллар США
+  Nominal: 1
+  NumCode: '840'
+  Previous: 89.8
+  Value: 90.12
