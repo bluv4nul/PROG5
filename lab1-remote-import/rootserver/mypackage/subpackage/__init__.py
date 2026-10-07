@@ -1,3 +1,5 @@
+from . import module_b
+
 """Вложенный пакет: пакет внутри пакета mypackage."""
 
 

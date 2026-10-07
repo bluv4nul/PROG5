@@ -83,7 +83,7 @@ class URLPackageFinder(URLFinder):
         init_url = "{}/{}/__init__.py".format(self.url, short_name)
         try:
             # HEAD — запрос только статуса, без скачивания самого файла.
-            response = requests.head(init_url, timeout=(2, 5), allow_redirects=True)
+            response = requests.head(init_url, timeout=(5, 5), allow_redirects=True)
         except requests.exceptions.RequestException:
             return False
         return response.status_code == 200

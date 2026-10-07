@@ -1,3 +1,5 @@
+from . import module_a
+
 """Обычный модуль внутри пакета mypackage."""
 
 
