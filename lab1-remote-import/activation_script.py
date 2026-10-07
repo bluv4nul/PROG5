@@ -76,7 +76,7 @@ def url_hook(some_str):
 
 
 class URLPackageFinder(URLFinder):
-    """Искатель, который кроме модулей находит пакеты (Сделано Claude)."""
+    """Искатель, который кроме модулей находит пакетов."""
 
     def is_remote_package(self, short_name):
         """True, если на сервере есть short_name/__init__.py, то есть это пакет."""
@@ -115,7 +115,7 @@ class URLPackageFinder(URLFinder):
 
 
 def url_package_hook(some_str):
-    """Хук с поддержкой пакетов (Сделано Claude).
+    """Хук с поддержкой пакетов.
 
     Старую работу делает url_hook, результат оборачиваем в URLPackageFinder.
     """
