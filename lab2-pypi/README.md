@@ -47,11 +47,11 @@ yaml_currencies.createFile("rates.yaml")
 
 ## Классы
 
-| Класс | Что возвращает `getCurrencies()` | Формат файла |
-| --- | --- | --- |
-| `GetCurrencies` | `dict` с курсами по коду валюты | JSON |
-| `ConvertToCSV` | `list[dict]` — по строке на валюту | CSV (разделитель `;`) |
-| `ConvertToYAML` | `dict` с курсами по коду валюты | YAML |
+| Класс           | Что возвращает `getCurrencies()`   | Формат файла          |
+| --------------- | ---------------------------------- | --------------------- |
+| `GetCurrencies` | `dict` с курсами по коду валюты    | JSON                  |
+| `ConvertToCSV`  | `list[dict]` — по строке на валюту | CSV (разделитель `;`) |
+| `ConvertToYAML` | `dict` с курсами по коду валюты    | YAML                  |
 
 Конвертеры реализованы по паттерну «Декоратор» поверх базового класса `Currencies`.
 
@@ -62,3 +62,9 @@ yaml_currencies.createFile("rates.yaml")
 ## Лицензия
 
 MIT
+
+## Проверка
+
+Пакет установлен с TestPyPI в чистое виртуальное окружение вне папки проекта. Зависимости (`requests`, `pyyaml`) подтянулись автоматически с основного PyPI, после чего пример из раздела «Использование» вывел текущий курс доллара:
+
+![Установка frolov-currencies с TestPyPI и вывод курса доллара](https://raw.githubusercontent.com/bluv4nul/PROG5/main/lab2-pypi/images/test-import.png)
