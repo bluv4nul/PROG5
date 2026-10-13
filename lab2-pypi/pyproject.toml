@@ -1,27 +1,25 @@
 [project]
-name = "lab2-pypi"
+name = "frolov-currencies"
 version = "0.1.0"
-description = "Add your description here"
+description = "Fetch current currency rates from the Central Bank of Russia"
 readme = "README.md"
-authors = [
-    { name = "andrew", email = "andrewkafrolov76@gmail.com" }
+authors = [{ name = "Andrew Frolov", email = "andrewkafrolov76@gmail.com" }]
+requires-python = ">=3.10"
+dependencies = ["pyyaml>=6.0.3", "requests>=2.32.5"]
+license = "MIT"
+license-files = ["LICENSE"]
+keywords = ["currency", "cbr", "exchange-rates"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+    "Intended Audience :: Developers",
 ]
-requires-python = ">=3.14"
-dependencies = [
-    "pyyaml>=6.0.3",
-    "requests>=2.32.5",
-    "setuptools>=84.0.0",
-    "wheel>=0.48.0",
-]
+
+[project.urls]
+Repository = "https://github.com/bluv4nul/PROG5/tree/main/lab2-pypi"
 
 [dependency-groups]
-dev = [
-    "pytest>=9.0.2",
-    "requests-mock>=1.12.1",
-]
-
-[project.scripts]
-lab2-pypi = "lab2_pypi:main"
+dev = ["pytest>=9.0.2", "requests-mock>=1.12.1"]
 
 [build-system]
 requires = ["uv_build>=0.12.23,<0.13.0"]

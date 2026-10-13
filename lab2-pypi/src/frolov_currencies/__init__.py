@@ -1,10 +1,8 @@
 import requests, json, csv, yaml
 from typing import Any
-from abc import *
-from pathlib import Path
+from abc import ABC, abstractmethod
 
 CBR_URL = "https://www.cbr-xml-daily.ru/daily_json.js"
-FILES_DIR = Path(__file__).parent / "files"
 
 
 class Currencies(ABC):
@@ -24,7 +22,7 @@ class Currencies(ABC):
         pass
 
     @abstractmethod
-    def createFile(self) -> None:
+    def createFile(self, path) -> None:
         pass
 
 
@@ -52,9 +50,9 @@ class GetCurrencies(Currencies):
             self.data = self.data["Valute"]
             return self.data
 
-    def createFile(self) -> None:
+    def createFile(self, path) -> None:
         if hasattr(self, "data"):
-            with open(FILES_DIR / "result_in_json.json", "w", encoding="utf-8") as file:
+            with open(path, "w", encoding="utf-8") as file:
                 json.dump(self.data, file, ensure_ascii=False)
         else:
             raise ValueError("Сначала вызовите getCurrencies()")
@@ -82,8 +80,8 @@ class Convert(Currencies):
     def getCurrencies(self) -> object:
         return self._currencies.getCurrencies()
 
-    def createFile(self) -> None:
-        return self._currencies.createFile()
+    def createFile(self, path) -> None:
+        return self._currencies.createFile(path)
 
 
 class ConvertToCSV(Convert):
@@ -120,11 +118,9 @@ class ConvertToCSV(Convert):
         else:
             raise ValueError("Нет данных о валютах")
 
-    def createFile(self):
+    def createFile(self, path):
         if hasattr(self, "_rows") and hasattr(self, "_columns"):
-            with open(
-                FILES_DIR / "result_in_csv.csv", "w", encoding="utf-8", newline=""
-            ) as file:
+            with open(path, "w", encoding="utf-8", newline="") as file:
                 writer = csv.DictWriter(file, fieldnames=self._columns, delimiter=";")
                 writer.writeheader()
                 writer.writerows(self._rows)
@@ -150,9 +146,9 @@ class ConvertToYAML(Convert):
 
         return self.data
 
-    def createFile(self) -> None:
+    def createFile(self, path) -> None:
         if hasattr(self, "data"):
-            with open(FILES_DIR / "result_in_yaml.yaml", "w", encoding="utf-8") as file:
+            with open(path, "w", encoding="utf-8") as file:
                 yaml.dump(data=self.data, stream=file, allow_unicode=True)
         else:
             raise ValueError("Сначала вызовите getCurrencies")
