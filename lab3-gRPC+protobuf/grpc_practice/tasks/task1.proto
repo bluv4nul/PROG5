@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package task1;
+
+// Сервис приветствий
+service Greeter {
+  rpc SayHello (HelloRequest) returns (HelloReply);
+  rpc SayHelloAgain (HelloRequest) returns (HelloReply);
+  rpc SayGoodbye (GoodbyeRequest) returns (GoodbyeReply);
+}
+
+// Запрос: имя того, кого приветствуем
+message HelloRequest {
+  string name = 1;
+}
+
+// Ответ: текст приветствия
+message HelloReply {
+  string message = 1;
+}
+
+message GoodbyeRequest {
+    string name = 1;
+}
+
+message GoodbyeReply {
+    string message = 1;
+}
