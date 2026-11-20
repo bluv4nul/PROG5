@@ -4,6 +4,10 @@
 
 Данные берутся из открытого API [cbr-xml-daily.ru](https://www.cbr-xml-daily.ru/).
 
+## Ссылка
+
+https://test.pypi.org./project/frolov-currencies/
+
 ## Установка
 
 Пакет опубликован в тестовом репозитории TestPyPI:
